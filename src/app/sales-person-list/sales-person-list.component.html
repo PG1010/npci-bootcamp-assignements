@@ -1,0 +1,93 @@
+<!-- <p>sales-person-list works!</p>
+{{name}} -->
+
+<h1>Sales person List</h1>
+
+
+<table border = "1">
+
+<tr>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Email</th>
+<th>Salary</th>
+<th>SalesVolume</th>
+<th>Status Of Salary</th>
+</tr>
+
+<tr *ngFor="let temp of list" [ngClass] = "{'metQuote' : temp.salary >= 20000,
+    'nonMetQuote' : temp.salary < 20000}">
+    <td>{{temp.firstName}}</td>
+    <td>{{temp.lastName}}</td>
+    <td>{{temp.email}}</td>
+    <td>{{temp.salary}}</td>
+    <td>{{temp.salesVolume}}</td>
+    <td>
+        <div *ngIf = "temp.salary>20000; else elseBlock">Salary Greater than 20,000</div>
+        <ng-template #elseBlock>Salary Less than 20,000</ng-template>
+    </td>
+</tr>
+
+
+
+
+
+
+
+<!-- <tr>
+    <th>{{list[1].firstName}}</th>
+    <th>{{list[1].lastName}}</th>
+    <th>{{list[1].email}}</th>
+    <th>{{list[1].salary}}</th>
+    <th>{{list[1].salesvolumne}}</th>
+</tr>
+
+<tr>
+    <th>{{list[2].firstName}}</th>
+    <th>{{list[2].lastName}}</th>
+    <th>{{list[2].email}}</th>
+    <th>{{list[2].salary}}</th>
+    <th>{{list[2].salesvolumne}}</th>
+</tr>
+
+<tr>
+    <th>{{list[3].firstName}}</th>
+    <th>{{list[3].lastName}}</th>
+    <th>{{list[3].email}}</th>
+    <th>{{list[3].salary}}</th>
+    <th>{{list[3].salesvolumne}}</th>
+</tr> -->
+
+
+</table>
+
+
+<form #salesperson="ngForm"(ngSubmit)="onSubmit()" >
+    <div class="row">
+    <div class="col-sm-3"><label for="">Firstname</label></div>
+    <div class="col-sm-6"><input type="text"name="firstName"[(ngModel)] =formModel.firstName ></div>
+</div>
+&nbsp;
+<div class="row">
+    <div class="col-sm-3"><label for="">LastName</label></div>
+    <div class="col-sm-6"><input type="text"name="lastName"[(ngModel)] = formModel.lastName></div>
+</div>
+&nbsp;
+<div class="row">
+    <div class="col-sm-3"><label for="">email</label></div>
+    <div class="col-sm-6"><input type="text"name="email"[(ngModel)] = formModel.email></div>
+</div>
+&nbsp;
+<div class="row">
+    <div class="col-sm-3"><label for="">salary</label></div>
+    <div class="col-sm-6"><input type="text"name="salary"[(ngModel)] = formModel.salary></div>
+</div>
+&nbsp;
+<div class="row">
+    <div class="col-sm-3"><label for="">SalesVolume</label></div>
+    <div class="col-sm-6"><input type="text"name="salesVolume" [(ngModel)] = formModel.salesVolume></div>
+</div>
+<div class="row">
+    <div class="col-sm-3"><button type="submit">submit</button></div>
+</div>
+</form>
